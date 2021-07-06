@@ -138,6 +138,7 @@ func New(ctx context.Context, config *srvconfig.Config) (*Server, error) {
 	for _, r := range config.RequiredPlugins {
 		required[r] = struct{}{}
 	}
+	log.G(ctx).WithField("num",len(plugins)).Infof("开始加载插件")
 	for _, p := range plugins {
 		id := p.URI()
 		reqID := id
